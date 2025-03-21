@@ -72,8 +72,11 @@ func (d *FlightSQLDatasource) getTables(w http.ResponseWriter, r *http.Request) 
 	defer cancel()
 	ctx = metadata.NewOutgoingContext(ctx, d.md)
 
+	catalog := "datafusion"
+
 	info, err := d.client.GetTables(ctx, &flightsql.GetTablesOpts{
-		TableTypes: []string{"BASE TABLE", "table"},
+		Catalog:    &catalog,
+		TableTypes: []string{"Base", "BASE TABLE", "table"},
 	})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -102,7 +105,11 @@ func (d *FlightSQLDatasource) getColumns(w http.ResponseWriter, r *http.Request)
 	ctx, cancel := context.WithTimeout(r.Context(), 30*time.Second)
 	defer cancel()
 	ctx = metadata.NewOutgoingContext(ctx, d.md)
+
+	catalog := "datafusion"
+
 	info, err := d.client.GetTables(ctx, &flightsql.GetTablesOpts{
+		Catalog:                &catalog,
 		TableNameFilterPattern: &tableName,
 		IncludeSchema:          true,
 	})
