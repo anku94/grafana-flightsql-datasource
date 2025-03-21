@@ -1,4 +1,4 @@
-:warning: This plugin is not under active development post v1.1.1. Feature PRs should be directed towards the [InfluxDB Grafana](https://github.com/grafana/grafana/tree/main/pkg/tsdb/influxdb) plugin which is now the [recommended](https://docs.influxdata.com/influxdb/cloud-serverless/process-data/visualize/grafana) way to use SQL with InfluxDB 3.0.
+Forked from the deprecated [InfluxDB](https://github.com/influxdata/grafana-flightsql-datasource) plugin and modified for personal use. Use with care.
 
 # Grafana Flight SQL Datasource
 
